@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Room, RoomEvent } from 'livekit-client';
 
 export default function LiveKitTest() {
@@ -67,7 +67,7 @@ export default function LiveKitTest() {
 
       // 4. Connect to room FIRST
       console.log('🔄 Connecting to LiveKit server...');
-      
+
       // Make sure NEXT_PUBLIC_LIVEKIT_URL is set in your .env.local
       const livekitUrl = process.env.NEXT_PUBLIC_LIVEKIT_URL;
       if (!livekitUrl) {
@@ -105,8 +105,7 @@ export default function LiveKitTest() {
       } catch (micError) {
         console.error('Failed to enable microphone:', micError);
       }
-
-    } catch (error:any) {
+    } catch (error: any) {
       console.error('❌ Connection failed:', error);
       setStatus(`failed: ${error.message}`);
     }
@@ -123,22 +122,24 @@ export default function LiveKitTest() {
   return (
     <div style={{ padding: 20 }}>
       <h1>LiveKit Connection Test</h1>
-      <button 
-        onClick={connect} 
+      <button
+        onClick={connect}
         style={{ padding: '10px 20px', marginRight: '10px' }}
         disabled={status === 'connected' || status === 'reconnecting'}
       >
         Connect
       </button>
-      <button 
-        onClick={disconnect} 
+      <button
+        onClick={disconnect}
         style={{ padding: '10px 20px', backgroundColor: '#ff4444', color: 'white' }}
         disabled={status !== 'connected'}
       >
         Disconnect
       </button>
-      <p>Status: <strong>{status}</strong></p>
-      
+      <p>
+        Status: <strong>{status}</strong>
+      </p>
+
       <div style={{ marginTop: '20px', padding: '10px', backgroundColor: '#f0f0f0' }}>
         <h3>Expected Flow:</h3>
         <ol>
