@@ -48,9 +48,9 @@ export default function LiveKitTest() {
       });
 
       roomObj.on(RoomEvent.ParticipantConnected, (participant) => {
-        console.log(`👤 Participant connected: ${participant.identity}`);
+        console.log(` Participant connected: ${participant.identity}`);
         if (participant.identity.includes('agent') || participant.identity.includes('assistant')) {
-          console.log('🎉 AGENT HAS JOINED THE ROOM!');
+          console.log(' AGENT HAS JOINED THE ROOM!');
           setStatus('agent joined');
         }
       });
@@ -105,9 +105,14 @@ export default function LiveKitTest() {
       } catch (micError) {
         console.error('Failed to enable microphone:', micError);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Connection failed:', error);
-      setStatus(`failed: ${error.message}`);
+
+      if (error instanceof Error) {
+        setStatus(`failed: ${error.message}`);
+      } else {
+        setStatus('failed: unknown error');
+      }
     }
   };
 
