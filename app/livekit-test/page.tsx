@@ -18,7 +18,7 @@ export default function LiveKitTest() {
       console.log(`🔄 Creating room: ${room}, identity: ${identity}`);
 
       // 1. Get token
-      const res = await fetch('http://13.53.167.157:8000/token', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/token`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -80,7 +80,7 @@ export default function LiveKitTest() {
       // 5. Dispatch agent AFTER successful connection
       console.log('🔄 Dispatching agent...');
       try {
-        const dispatchRes = await fetch('http://localhost:3001/dispatch-agent', {
+        const dispatchRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/dispatch-agent`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ room: room }),
