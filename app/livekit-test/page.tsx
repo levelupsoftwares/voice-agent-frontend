@@ -69,7 +69,7 @@ export default function LiveKitTest() {
       console.log('🔄 Connecting to LiveKit server...');
 
       // Make sure NEXT_PUBLIC_LIVEKIT_URL is set in your .env.local
-      const livekitUrl = process.env.NEXT_PUBLIC_LIVEKIT_URL;
+      const livekitUrl = process.env.LIVEKIT_URL;
       if (!livekitUrl) {
         throw new Error('NEXT_PUBLIC_LIVEKIT_URL is not set');
       }
