@@ -18,7 +18,7 @@ export default function LiveKitTest() {
       console.log(`🔄 Creating room: ${room}, identity: ${identity}`);
 
       // 1. Get token
-      const res = await fetch('http://localhost:3001/token', {
+      const res = await fetch('http://13.53.167.157:8000/token', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

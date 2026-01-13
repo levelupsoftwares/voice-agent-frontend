@@ -30,7 +30,7 @@ export function App({ appConfig }: AppProps) {
   const tokenSource = useMemo(() => {
     // Point to Next.js API route
     return TokenSource.endpoint('/api/connection-details');
-  }, [appConfig]);
+  }, []);
 
   const session = useSession(
     tokenSource,
